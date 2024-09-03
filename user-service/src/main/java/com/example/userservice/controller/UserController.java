@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user-service")
+@RequestMapping("/")  // http://127.0.0.1:60000/user-service/welcome
 public class UserController {
 
     private Environment env;
