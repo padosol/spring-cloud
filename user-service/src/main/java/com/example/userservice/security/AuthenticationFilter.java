@@ -21,6 +21,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -74,7 +75,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         String token = Jwts.builder()
                 .subject(userDetails.getUserId())
                 .expiration(new Date(System.currentTimeMillis() + Long.parseLong(env.getProperty("token.expiration_time"))))
-                .signWith(Jwts.SIG.HS256.key().build(), Jwts.SIG.HS256)
+                .signWith(Keys.hmacShaKeyFor(Decoders.BASE64.decode(env.getProperty("token.secret"))))
                 .compact();
 
         response.addHeader("token", token);

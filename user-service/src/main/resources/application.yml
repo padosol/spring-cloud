@@ -40,4 +40,4 @@ logging:
 
 token:
   expiration_time: 86400000 # 만료기간 1일
-  secret: fsaklfjwqnlkthncwkqjrlhxeqwjkrhqewjkrxnqwehkjlrxhjkwxhnrkwedqewdwxrwerwerwerxewfewfewfwefwef
+  secret: fsaklfjwqnlkthncwkqjrlhxeqwjkrhqewjkrxnqwehkjlrxhjkwxhnrkwed
