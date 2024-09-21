@@ -1,0 +1,11 @@
+  spring:
+    datasource:
+      url: jdbc:h2:mem:testdb
+      username: sa
+      password: '{cipher}AQB/2QD8FIFxn3iXxhCuvJ/8dBvpe9MMkhGrPbsZ2v9XiQwIju9T9/kQHmMKIG82asCMHc1+Fu2/zSCUsU1rYc0oOo9tOGTNRye3IcX1JnWptuns9X1L6ORLP+5DYEsayOVpGeDnWmHHewfCew3tcI+nFfEsQn/J+ssHvKunTJL3ZV36NTL4ZLRGtvC2x0LQ8PwgQaNj4h9fFmo6ZEp1vhVbTbFGv9DZesFnYjKBYnP+RL5dhvgAIhhUT8maRu0fHc9BGyEMrmlzcUDkW2kTxj7Uj2LBRwZuE5JHb2igX3I9mcPTIeERS/hD9dMxflI9nYB1+DyoJ8HllQMWpiN558Dnw4Ja4/9Rg8VfJEcCIruJ9ZDZVJPgEDBQ0I7f2fa7Sas='
+
+
+  order_service:
+    url: http://ORDER-SERVICE/order-service/%s/orders
+    exception:
+      orders_is_empty: User's orders is empty.

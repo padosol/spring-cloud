@@ -2,12 +2,26 @@ server:
   port: 0
 
 spring:
+  cloud:
+    config:
+      name: user-service  # 파일명
+  config:
+    import: optional:configserver:http://localhost:8888  # config server
+#  profiles:
+#    active: dev
+
   application:
     name: user-service
 
-  datasource:
-    url: jdbc:h2:mem:testdb
-    username: sa
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+#  datasource:
+#    url: jdbc:h2:mem:testdb
+#    username: sa
 
   jpa:
     hibernate:
@@ -20,6 +34,8 @@ spring:
       settings:
         web-allow-others: true
       path: /h2-console
+
+
 
 eureka:
   instance:
@@ -36,8 +52,26 @@ greeting:
 
 logging:
   level:
-    com.example.userservice: DEBUG
+    com.example.userservice.client: DEBUG
 
-token:
-  expiration_time: 86400000 # 만료기간 1일
-  secret: fsaklfjwqnlkthncwkqjrlhxeqwjkrhqewjkrxnqwehkjlrxhjkwxhnrkwed
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh, info, metrics, prometheus
+  tracing:
+    sampling:
+      probability: 1.0
+    propagation:
+      consume: b3
+      produce: b3_multi
+  zipkin:
+    tracing:
+      endpoint: "http://localhost:9411/api/v2/spans"
+
+#token:
+#  expiration_time: 86400000 # 만료기간 1일
+#  secret: fsaklfjwqnlkthncwkqjrlhxeqwjkrhqewjkrxnqwehkjlrxhjkwxhnrkwed
+
+
+

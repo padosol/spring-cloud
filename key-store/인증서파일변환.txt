@@ -1,0 +1,1 @@
+keytool -export -alias apiEncryptionKey -keystore apiEnctryptionKey.jks -rfc -file trustServer.cer
