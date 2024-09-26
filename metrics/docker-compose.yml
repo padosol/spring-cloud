@@ -1,0 +1,30 @@
+version: 3
+
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/prometheus/prometheus.yml:ro
+    ports:
+      - 19090:9090
+    command: 
+      - "--web.enable-lifecycle"
+    networks:
+      - promnet
+    user: root
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    volumes:
+      - ./grafana-volume:/var/lib/grafana
+    networks:
+      - promnet
+    ports:
+      - 13030:3030
+    user: root
+
+networks:
+  promnet:
+    driver: bridge
